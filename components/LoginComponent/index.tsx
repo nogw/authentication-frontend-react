@@ -4,7 +4,7 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { useEffect, useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import QrCodeLogin from '../QrCodeLogin';
-import ResetPassword from '../ResetPassword';
+import ResetPasswordSendEmail from '../ResetPasswordSendEmail';
 import SignUpComponent from '../SignUpComponent';
 import SignInComponent from '../SignInComponent';
 
@@ -46,7 +46,7 @@ function LoginComponent() {
         timeout={500} 
         classNames="menu-secondary"
       >
-        <ResetPassword setMenuNow={setMenuNow}/>
+        <ResetPasswordSendEmail setMenuNow={setMenuNow}/>
       </CSSTransition>
     </Container>
   );

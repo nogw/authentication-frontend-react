@@ -7,12 +7,6 @@ export const Container = styled.div`
   padding: 36px;
   margin: 12px;
   width: 26rem; 
-
-  .sign {
-    font-size: 1.5rem;
-    margin-bottom: 32px;
-    color: rgba(0,0,0,.85);
-  }
   
   .input {
     input:first-child {
@@ -41,29 +35,7 @@ export const Container = styled.div`
         opacity: 0.6;
       }
     }
-
-    &.password {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .eye {
-        right: 15px;
-        top: 10px;
-        opacity: 0.4;
-        position: absolute;
-        cursor: pointer;
-        transition: 200ms ease all;
-        font-size: 18px;
-
-        &:hover {
-          opacity: 0.9;
-        }
-      }
-    }
   }
-
 
   .btnwithoutcolor {
     width: 100%;

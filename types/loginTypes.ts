@@ -9,3 +9,8 @@ export interface IInputsSignUp {
   signUpPassword: string,
   signUpPasswordConfirm: string,
 }
+
+export interface IInputsResetPassword {
+  password: string,
+  passwordConfirm: string
+}
