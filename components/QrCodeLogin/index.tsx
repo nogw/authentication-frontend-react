@@ -1,15 +1,24 @@
-import { Container } from './styles';
-import { motion } from 'framer-motion'
-import { io } from "socket.io-client"
+import { motion } from "framer-motion"
+import { io, Socket } from "socket.io-client"
+import { useEffect, useState } from "react";
+import QRCode from "qrcode.react";
+import { v4 as uuidv4 } from "uuid";
 
-var QRCode = require('qrcode.react');
+import { Container } from "./styles";
 
 function QrCodeLogin({ setMenuNow }) {
   const socket = io("http://localhost:8000");
+  const socketIdRoom = uuidv4()
 
-  socket.on('connection', function() {
-    console.log("Successfully connected!");
+  socket.on("connect", () => {
+    console.log(socket.id)
+
+    socket.emit("join", socketIdRoom)  
   });
+
+  socket.on("auth", (jwt: Socket) => {
+    console.log(jwt)
+  })
 
   return (
     <Container>
@@ -20,11 +29,13 @@ function QrCodeLogin({ setMenuNow }) {
         transition={{ duration: 0.5, delay: 0 }} 
       >
         <QRCode 
-          value="https://localhost:8000/authqrcode" 
+          value={`http://localhost:3000/auth/qrcode/${socketIdRoom}`} 
           renderAs={"svg"}
           style={{ height: "calc(100% + 0px)", width: "calc(100% + 0px)"}}
         />
       </motion.div>
+
+      <p>http://localhost:3000/auth/qrcode/{socketIdRoom}</p>
 
       <motion.div            
         initial={{ x: 40, opacity: 0 }}
