@@ -1,8 +1,16 @@
 import { Container } from './styles';
 import { motion } from 'framer-motion'
+import { io } from "socket.io-client"
+
 var QRCode = require('qrcode.react');
 
 function QrCodeLogin({ setMenuNow }) {
+  const socket = io("http://localhost:8000");
+
+  socket.on('connection', function() {
+    console.log("Successfully connected!");
+  });
+
   return (
     <Container>
       <motion.div
@@ -37,6 +45,10 @@ function QrCodeLogin({ setMenuNow }) {
       >
         Back sign in
       </motion.button>
+
+      <button>
+        call socket function
+      </button>
     </Container>
   );
 };
