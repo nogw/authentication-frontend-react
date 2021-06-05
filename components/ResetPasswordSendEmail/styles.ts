@@ -85,7 +85,6 @@ export const Container = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    margin: 24px;
     width: clamp(10rem, 100%, 22rem);
     display: flex;
     align-items: center;

@@ -1,6 +1,6 @@
 export interface IInputsSignIn {
-  signInEmail: string,
-  signInPassword: string,
+  email: string,
+  password: string,
 }
 
 export interface IInputsSignUp {
@@ -13,4 +13,9 @@ export interface IInputsSignUp {
 export interface IInputsResetPassword {
   password: string,
   passwordConfirm: string
+}
+
+export interface IErrors {
+  email: string,
+  password: string
 }

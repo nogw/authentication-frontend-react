@@ -26,7 +26,7 @@ function LoginComponent() {
         in={MenuNow === 'register'}
         unmountOnExit 
         timeout={500} 
-        classNames="menu-secondary"
+        classNames="menu-primary"
       >
         <SignUpComponent setMenuNow={setMenuNow}/>
       </CSSTransition>
@@ -35,7 +35,7 @@ function LoginComponent() {
         in={MenuNow === 'qrcode'}
         unmountOnExit 
         timeout={500} 
-        classNames="menu-secondary"
+        classNames="menu-primary"
       >
         <QrCodeLogin setMenuNow={setMenuNow}/>
       </CSSTransition>
@@ -44,7 +44,7 @@ function LoginComponent() {
         in={MenuNow === 'forgetpassword'}
         unmountOnExit 
         timeout={500} 
-        classNames="menu-secondary"
+        classNames="menu-primary"
       >
         <ResetPasswordSendEmail setMenuNow={setMenuNow}/>
       </CSSTransition>

@@ -1,7 +1,9 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import NProgress from 'nprogress'; 
-import 'nprogress/nprogress.css'; 
 NProgress.configure({ showSpinner: false });
+
+import 'nprogress/nprogress.css'; 
+import { AuthProvider } from '../context/AuthContext';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -13,8 +15,14 @@ const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
   }
 
+  html {
+    min-height: 100vh;
+    width: 100vw;
+  }
+
   body {
     min-height: 100vh;
+    width: 100vw;
     color: #212121;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     overflow: hidden;
@@ -42,9 +50,9 @@ const GlobalStyle = createGlobalStyle`
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <AuthProvider>
       <GlobalStyle />
       <Component {...pageProps} />
-    </>
+    </AuthProvider>
   )
 }

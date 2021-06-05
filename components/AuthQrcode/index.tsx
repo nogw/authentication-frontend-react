@@ -2,8 +2,9 @@ import { Container } from './styles';
 import { useEffect, useState } from 'react';
 import { io } from "socket.io-client"
 import { useRouter } from 'next/router';
+import { parseCookies } from 'nookies'
 
-function AuthQrcode() {
+export async function getServerSideProps() {
   const router = useRouter()
   const { slug } = router.query
   
@@ -11,17 +12,34 @@ function AuthQrcode() {
 
   socket.on('connect', () => {
     console.log(socket.id)
+
+    const { 'next.auth.app.v1': token } = parseCookies()
     
-    socket.emit("join", slug)  
-  
-    socket.emit("jwt", "hiii this is suppost jwt token")
+    if (!token) {
+      console.log(token)
+    }
+    
+    socket.emit("join", slug)    
+    socket.emit("jwt", token)
 
-    console.log(slug)
+    return {
+      props: {
+        success: true
+      },
+    }
   });
+}
 
+function AuthQrcode({ success }) {
   return (
     <Container>
-      <h1>AuthQrcode</h1>
+      {
+        success == true ? (
+          <h1>success</h1>
+        ) : (
+          <h1>you need auth to accept qrcode</h1>
+        )
+      }
     </Container>
   );
 };

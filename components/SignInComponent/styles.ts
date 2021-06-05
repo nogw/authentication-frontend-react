@@ -9,8 +9,18 @@ export const Container = styled.div`
   width: 26rem; 
 
   .input {
+    position: relative;
+
     input:first-child {
-      margin-bottom: 12px;
+      margin-bottom: 26px;
+    }
+
+    .errorMessage {
+      color: #f09696;
+      position: absolute;
+      top: 40px;
+      left: 2px;
+      font-size: 12.5px;
     }
 
     input {
@@ -36,11 +46,16 @@ export const Container = styled.div`
       }
     }
 
+    &.error {
+      input {
+        border: 1px solid #f09696;
+      }
+    }
+
     &.password {
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
 
       .eye {
         right: 15px;
@@ -132,7 +147,6 @@ export const Container = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    margin: 24px;
     width: clamp(10rem, 100%, 22rem);
     display: flex;
     align-items: center;

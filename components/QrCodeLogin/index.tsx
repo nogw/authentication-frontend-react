@@ -3,6 +3,7 @@ import { io, Socket } from "socket.io-client"
 import { useEffect, useState } from "react";
 import QRCode from "qrcode.react";
 import { v4 as uuidv4 } from "uuid";
+import nookies from 'nookies'
 
 import { Container } from "./styles";
 
@@ -17,7 +18,12 @@ function QrCodeLogin({ setMenuNow }) {
   });
 
   socket.on("auth", (jwt: Socket) => {
-    console.log(jwt)
+    console.log(jwt.toString())
+    
+    nookies.set(undefined, 'next.auth.app.v1', jwt.toString(), {
+      maxAge: 60 * 60 * 24,
+      path: '/'
+    })
   })
 
   return (
@@ -56,10 +62,6 @@ function QrCodeLogin({ setMenuNow }) {
       >
         Back sign in
       </motion.button>
-
-      <button>
-        call socket function
-      </button>
     </Container>
   );
 };
