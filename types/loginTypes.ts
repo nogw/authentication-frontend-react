@@ -4,10 +4,10 @@ export interface IInputsSignIn {
 }
 
 export interface IInputsSignUp {
-  signUpName: string,
-  signUpEmail: string,
-  signUpPassword: string,
-  signUpPasswordConfirm: string,
+  name: string,
+  email: string,
+  password: string,
+  passwordConfirm: string,
 }
 
 export interface IInputsResetPassword {
@@ -18,4 +18,11 @@ export interface IInputsResetPassword {
 export interface IErrors {
   email: string,
   password: string
+}
+
+export interface IErrorsSignUp {
+  name: string,
+  email: string,
+  password: string,
+  passwordConfirm: string,
 }

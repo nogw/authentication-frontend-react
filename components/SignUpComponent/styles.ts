@@ -9,8 +9,18 @@ export const Container = styled.div`
   width: 26rem; 
 
   .input {
+    position: relative;
+
     input:first-child {
-      margin-bottom: 12px;
+      margin-bottom: 26px;
+    }
+
+    .errorMessage {
+      color: #f09696;
+      position: absolute;
+      top: 40px;
+      left: 2px;
+      font-size: 12.5px;
     }
 
     input {
@@ -33,6 +43,12 @@ export const Container = styled.div`
 
       &::placeholder {
         opacity: 0.6;
+      }
+    }
+
+    &.error {
+      input {
+        border: 1px solid #f09696;
       }
     }
 

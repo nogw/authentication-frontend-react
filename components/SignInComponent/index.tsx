@@ -9,12 +9,14 @@ import { Container, Checkbox } from './styles';
 import { IInputsSignIn, IErrors } from '../../types/loginTypes';
 import { api } from '../../services/api';
 import { AuthContext } from '../../context/AuthContext';
+import Router from 'next/router';
 
 function SignInComponent({ setMenuNow }) {
   const initialErrors: IErrors = {
     email: "",
     password: "",
   }
+
   const initialInputsValues: IInputsSignIn = {
     email: "",
     password: "",
@@ -30,11 +32,11 @@ function SignInComponent({ setMenuNow }) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     
-    if (value.length < 1) {
+    value.length < 1 ? (
       setErrors(prev => ({ ...prev, [name]: `${name.charAt(0).toUpperCase() + name.slice(1)} is required` }))
-    } else {                            
+    ) : (                            
       setErrors(prev => ({ ...prev, [name]: "" }))
-    }
+    )
     
     setInputsValues(prev => ({ ...prev, [name]: value }))
   }
@@ -55,10 +57,11 @@ function SignInComponent({ setMenuNow }) {
         maxAge: 60 * 60 * 24,
         path: '/'
       })
+
+      Router.push("/dashboard")
     })
     .catch((error) => {
       NProgress.done()
-      console.log(error.response.data)
       setErrors(error.response.data)
     })
   }

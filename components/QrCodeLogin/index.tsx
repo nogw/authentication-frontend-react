@@ -41,7 +41,7 @@ function QrCodeLogin({ setMenuNow }) {
         />
       </motion.div>
 
-      <p>http://localhost:3000/auth/qrcode/{socketIdRoom}</p>
+      <p>{socketIdRoom}</p>
 
       <motion.div            
         initial={{ x: 40, opacity: 0 }}
