@@ -26,3 +26,15 @@ export interface IErrorsSignUp {
   password: string,
   passwordConfirm: string,
 }
+
+export interface TypeUser {
+  // name: String,
+  // email: String,
+  token: String
+}
+
+export interface TypeAuthContext {
+  user: TypeUser
+  setUser: any
+  logOutAccount: () => void
+}

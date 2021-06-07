@@ -26,9 +26,10 @@ function SignInComponent({ setMenuNow }) {
   const [passwordConfirmVisible, setPasswordConfirmVisible] = useState(false)
   const [inputsValues, setInputsValues] = useState(initialInputsValues)
   const [checked, setChecked] = useState(true)
-  const { setUser } = useContext(AuthContext)
   const [errors, setErrors] = useState(initialErrors)
-
+  
+  const { setUser } = useContext(AuthContext)
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     
@@ -51,10 +52,13 @@ function SignInComponent({ setMenuNow }) {
     .then((response) => {
       NProgress.done()
 
-      setUser({ token: response.data.token })
+      const cookieValue = JSON.stringify({
+        token: response.data.token,
+        session: checked
+      })
 
-      nookies.set(undefined, 'next.auth.app.v1', response.data.token, {
-        maxAge: 60 * 60 * 24,
+      nookies.set(undefined, 'next.auth.app.v1', cookieValue, {
+        maxAge: 60 * 60 * 24 * 7, // 1 week
         path: '/'
       })
 

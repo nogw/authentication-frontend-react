@@ -49,6 +49,10 @@ export const Container = styled.div`
     &.error {
       input {
         border: 1px solid #f09696;
+
+        &:focus {
+          box-shadow: 0px 0px 0px 1.4px rgba(240, 150, 150, 0.3);
+        }
       }
     }
 

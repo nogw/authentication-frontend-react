@@ -33,9 +33,9 @@ const Container = styled.div`
 `;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { ['next.auth.app.v1']: token } = parseCookies(ctx)
+  const { ['next.auth.app.v1']: tokenResponse } = parseCookies(ctx)
 
-  if (!token) {
+  if (!tokenResponse) {
     return {
       redirect: {
         destination: "/login",
@@ -45,14 +45,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 
   return {
-    props: {
-
-    }
+    props: {}
   }
 }
 
 function Dashboard() {
-  const { logOutAccount } = useContext(AuthContext)
+  const { logOutAccount, user } = useContext(AuthContext)
 
   return (
     <Container>

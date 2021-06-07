@@ -2,42 +2,44 @@ import { Container } from './styles';
 import { useEffect, useState } from 'react';
 import { io } from "socket.io-client"
 import { useRouter } from 'next/router';
-import { parseCookies } from 'nookies'
+import Router from 'next/router';
+import nookies from 'nookies'
+import { GetServerSideProps } from 'next';
 
-export async function getServerSideProps() {
+function AuthQrcode({ tokenExists }) {
+  const socket = io("http://localhost:8000");
+  
   const router = useRouter()
   const { slug } = router.query
-  
-  const socket = io("http://localhost:8000");
 
   socket.on('connect', () => {
     console.log(socket.id)
+    const { 'next.auth.app.v1': token } = nookies.get()
 
-    const { 'next.auth.app.v1': token } = parseCookies()
+    if (token) {
+      const tokenJson = JSON.parse(token)
     
-    if (!token) {
-      console.log(token)
-    }
-    
-    socket.emit("join", slug)    
-    socket.emit("jwt", token)
-
-    return {
-      props: {
-        success: true
-      },
+      const tokenJsonToSend = {
+        token: tokenJson.token,
+        session: true
+      }
+      
+      socket.emit("join", slug)    
+      socket.emit("jwt", JSON.stringify(tokenJsonToSend))
     }
   });
-}
 
-function AuthQrcode({ success }) {
   return (
     <Container>
       {
-        success == true ? (
-          <h1>success</h1>
+        !tokenExists ? (
+          <>
+            <button onClick={() => router.push("/login")} className="message error">you need auth to accept qrcode</button>
+          </>
         ) : (
-          <h1>you need auth to accept qrcode</h1>
+          <>
+            <h1 className="message success">success</h1>
+          </>
         )
       }
     </Container>

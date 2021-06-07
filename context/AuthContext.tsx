@@ -1,18 +1,7 @@
 import Router from "next/router";
 import { destroyCookie, parseCookies } from "nookies";
 import { createContext, useEffect, useState } from "react";
-
-type TypeUser = {
-  // name: String,
-  // email: String,
-  token: String
-}
-
-type TypeAuthContext = {
-  user: TypeUser
-  setUser: any
-  logOutAccount: () => void
-}
+import { TypeAuthContext, TypeUser } from '../types/loginTypes'
 
 export const AuthContext = createContext({} as TypeAuthContext)
 
@@ -23,8 +12,19 @@ const logOutAccount = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState<TypeUser | null>(null)
-  const { 'next.auth.app.v1': token } = parseCookies()
 
+  // useEffect(() => {
+  //   const { 'next.auth.app.v1': token } = parseCookies()
+    
+  //   if (token) {
+  //     const tokenJson = JSON.parse(token)
+      
+  //     if (!tokenJson.session) {
+  //       logOutAccount()
+  //     } 
+  //   }
+  // }, [])
+  
   return (
     <AuthContext.Provider value={{ user, setUser, logOutAccount }}>
       {children}

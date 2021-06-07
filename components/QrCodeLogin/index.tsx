@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import nookies from 'nookies'
 
 import { Container } from "./styles";
+import Router from "next/router";
 
 function QrCodeLogin({ setMenuNow }) {
   const socket = io("http://localhost:8000");
@@ -18,12 +19,14 @@ function QrCodeLogin({ setMenuNow }) {
   });
 
   socket.on("auth", (jwt: Socket) => {
-    console.log(jwt.toString())
+    console.log(jwt)
     
     nookies.set(undefined, 'next.auth.app.v1', jwt.toString(), {
       maxAge: 60 * 60 * 24,
       path: '/'
     })
+
+    Router.push("/dashboard")
   })
 
   return (
@@ -41,7 +44,7 @@ function QrCodeLogin({ setMenuNow }) {
         />
       </motion.div>
 
-      <p>{socketIdRoom}</p>
+      <p>http://localhost:3000/auth/qrcode/{socketIdRoom}</p>
 
       <motion.div            
         initial={{ x: 40, opacity: 0 }}
