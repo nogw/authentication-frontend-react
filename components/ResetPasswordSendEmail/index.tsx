@@ -35,7 +35,7 @@ function ResetPasswordSendEmail({ setMenuNow }) {
         className="input"
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.5, delay: 0.05 }}
       >
         <input name="emailToReset" onChange={(e) => setEmail(e.target.value)} value={email} spellCheck="false" type="text" placeholder="Email"/>
       </motion.div>
@@ -44,7 +44,7 @@ function ResetPasswordSendEmail({ setMenuNow }) {
         className="btnwithcolor"
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
       >
         <button onClick={handleResetPassword}>Reset</button>
       </motion.div>
@@ -54,7 +54,7 @@ function ResetPasswordSendEmail({ setMenuNow }) {
         style={{ marginTop: "12px" }}
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
       >
         <button onClick={() => setMenuNow('login')}>Back sign in</button>
       </motion.div>

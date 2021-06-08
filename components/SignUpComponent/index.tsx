@@ -73,7 +73,7 @@ function SignUpComponent({ setMenuNow }) {
         className={`input ${errors.name && "error"}`}
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.5, delay: 0.05 }}
       >
         <input name="name" onChange={handleChange} value={inputsValues.name} spellCheck="false" type="text" placeholder="Name"/>
         <p className="errorMessage">
@@ -101,7 +101,7 @@ function SignUpComponent({ setMenuNow }) {
         className={`input password ${errors.password && "error"}`}
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
       >
         <input type={passwordVisible ? "text" : "password"} name="password" onChange={handleChange} value={inputsValues.password} spellCheck="false" placeholder="Password"/>
         {
@@ -143,7 +143,7 @@ function SignUpComponent({ setMenuNow }) {
         className="btnwithcolor"
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.5, delay: 0.25 }}
       >
         <button onClick={handleSignUp}>Sign up</button>
       </motion.div>
@@ -153,7 +153,7 @@ function SignUpComponent({ setMenuNow }) {
         className="buttons2create"
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
       >
         <button className="btnwithoutcolor" onClick={() => setMenuNow('login')}>Back sign in</button>
       </motion.div>

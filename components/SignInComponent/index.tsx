@@ -5,7 +5,7 @@ import axios from 'axios';
 import NProgress from 'nprogress';
 import nookies from 'nookies'
 
-import { Container, Checkbox } from './styles';
+import { Container } from './styles';
 import { IInputsSignIn, IErrors } from '../../types/loginTypes';
 import { api } from '../../services/api';
 import { AuthContext } from '../../context/AuthContext';
@@ -25,7 +25,6 @@ function SignInComponent({ setMenuNow }) {
   const [passwordVisible, setPasswordVisible] = useState(false)
   const [passwordConfirmVisible, setPasswordConfirmVisible] = useState(false)
   const [inputsValues, setInputsValues] = useState(initialInputsValues)
-  const [checked, setChecked] = useState(true)
   const [errors, setErrors] = useState(initialErrors)
   
   const { setUser } = useContext(AuthContext)
@@ -81,7 +80,7 @@ function SignInComponent({ setMenuNow }) {
         className={`input ${errors.email && "error"}`}
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.5, delay: 0.05 }}
       >
         <input name="email" onChange={handleChange} value={inputsValues.email} spellCheck="false" type="text" placeholder="Email"/>
         <p className="errorMessage">
@@ -94,7 +93,7 @@ function SignInComponent({ setMenuNow }) {
         className={`input password ${errors.password && "error"}`}
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
       >
         <input type={passwordVisible ? "text" : "password"} name="password" onChange={handleChange} value={inputsValues.password} spellCheck="false" placeholder="Password"/>
         {
@@ -115,15 +114,8 @@ function SignInComponent({ setMenuNow }) {
         className="options"
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
       >
-        <Checkbox>
-          <label className="b-contain">
-            <span>Remember me</span>
-            <input type="checkbox" defaultChecked={checked} onChange={() => setChecked(!checked)}/>
-            <div className="b-input"/>
-          </label>
-        </Checkbox>
         <div className="forgetpassword">
           <a onClick={() => setMenuNow('forgetpassword')}>Forget Password?</a>
         </div>
@@ -133,7 +125,7 @@ function SignInComponent({ setMenuNow }) {
         className="btnwithcolor"
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
       >
         <button onClick={handleSignIn}>Sign in</button>
       </motion.div>
@@ -142,7 +134,7 @@ function SignInComponent({ setMenuNow }) {
         className="buttons2create"
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.25 }}
       >
         <button className="btnwithoutcolor" onClick={() => setMenuNow('qrcode')}>Qr code sign in</button>
         <button className="btnwithoutcolor" onClick={() => setMenuNow('register')}>Sign up</button>

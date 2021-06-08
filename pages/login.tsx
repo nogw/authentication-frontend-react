@@ -6,7 +6,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: 100vh;
   background-color: #fff;
 
   @media screen and (max-width: 600px) {

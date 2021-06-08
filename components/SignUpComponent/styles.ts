@@ -19,7 +19,6 @@ export const Container = styled.div`
       color: #f09696;
       position: absolute;
       top: 40px;
-      left: 2px;
       font-size: 12.5px;
     }
 
@@ -82,7 +81,7 @@ export const Container = styled.div`
     border: 1px solid #f1f1f1;
     color: rgba(0,0,0,.85);
     line-height: 22px;
-    padding: 6px 15px;
+    padding: 7px 15px 6px 15px;
     font-weight: lighter;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;

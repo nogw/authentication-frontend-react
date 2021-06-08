@@ -17,15 +17,8 @@ function AuthQrcode({ tokenExists }) {
     const { 'next.auth.app.v1': token } = nookies.get()
 
     if (token) {
-      const tokenJson = JSON.parse(token)
-    
-      const tokenJsonToSend = {
-        token: tokenJson.token,
-        session: true
-      }
-      
       socket.emit("join", slug)    
-      socket.emit("jwt", JSON.stringify(tokenJsonToSend))
+      socket.emit("jwt", token)
     }
   });
 

@@ -15,15 +15,9 @@ const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
   }
 
-  html {
-    min-height: 100vh;
-    width: 100vw;
-  }
-
   body {
-    min-height: 100vh;
-    width: 100vw;
     color: #212121;
+    min-height: 100vh;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     overflow: hidden;
   }

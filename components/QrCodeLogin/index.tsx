@@ -44,23 +44,21 @@ function QrCodeLogin({ setMenuNow }) {
         />
       </motion.div>
 
-      <p>http://localhost:3000/auth/qrcode/{socketIdRoom}</p>
-
       <motion.div            
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }} 
+        transition={{ duration: 0.5, delay: 0.05 }} 
         className="scantext"
       >
         <div className="line" />
-        <p>scanning the code to complete the login</p>
+        <p>scanning the code to complete the login in a browser already logged in</p>
         <div className="line" />
       </motion.div>
 
       <motion.button 
         initial={{ x: 40, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
         onClick={() => setMenuNow("login")}
       >
         Back sign in

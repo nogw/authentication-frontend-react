@@ -41,8 +41,9 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     width: 100%;
-    margin: 16px 0px 32px 0px;
+    margin: 10px 0px 12px 0px;
 
     .line {
       margin-top: 4px;
@@ -54,7 +55,7 @@ export const Container = styled.div`
     p {
       color: rgba(0, 0, 0, 0.45);
       font-size: 12px;
-      margin: auto;
+      margin: 16px;
     }
   }
 
