@@ -1,6 +1,6 @@
 import { io } from "socket.io-client"
 
-const URL = process.env.BACKEND_URL || "http://localhost:8000"
+const URL = process.env.BACKEND_URL
 const socket = io(URL)
 
 socket.onAny((event, ...args) => {
