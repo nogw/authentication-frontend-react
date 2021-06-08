@@ -9,7 +9,7 @@ import { Container } from "./styles";
 import Router from "next/router";
 
 function QrCodeLogin({ setMenuNow }) {
-  const socket = io("http://localhost:8000");
+  const socket = io(process.env.BACKEND_URL);
   const socketIdRoom = uuidv4()
 
   socket.on("connect", () => {
