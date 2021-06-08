@@ -52,16 +52,12 @@ function SignInComponent({ setMenuNow }) {
     .then((response) => {
       NProgress.done()
 
-      const cookieValue = JSON.stringify({
-        token: response.data.token,
-        session: checked
-      })
-
-      nookies.set(undefined, 'next.auth.app.v1', cookieValue, {
+      nookies.set(undefined, 'next.auth.app.v1', response.data.token, {
         maxAge: 60 * 60 * 24 * 7, // 1 week
         path: '/'
       })
 
+      setUser({ token: response.data.token })
       Router.push("/dashboard")
     })
     .catch((error) => {

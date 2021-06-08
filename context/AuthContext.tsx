@@ -12,18 +12,13 @@ const logOutAccount = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState<TypeUser | null>(null)
+  const { 'next.auth.app.v1': token } = parseCookies()
 
-  // useEffect(() => {
-  //   const { 'next.auth.app.v1': token } = parseCookies()
-    
-  //   if (token) {
-  //     const tokenJson = JSON.parse(token)
-      
-  //     if (!tokenJson.session) {
-  //       logOutAccount()
-  //     } 
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (token) {
+      setUser({ token: token })
+    }
+  }, [])
   
   return (
     <AuthContext.Provider value={{ user, setUser, logOutAccount }}>
