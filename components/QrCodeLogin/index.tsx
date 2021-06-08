@@ -9,13 +9,12 @@ import { Container } from "./styles";
 import Router from "next/router";
 
 function QrCodeLogin({ setMenuNow }) {
+  const [qrCodeId, setQrCodeId] = useState(uuidv4()) 
   const socket = io(process.env.NEXT_PUBLIC_BACKEND_URL);
-  const socketIdRoom = uuidv4()
 
   socket.on("connect", () => {
-    console.log(socket.id)
-
-    socket.emit("join", socketIdRoom)  
+    setQrCodeId(uuidv4())
+    socket.emit("join", qrCodeId)  
   });
 
   socket.on("auth", (jwt: Socket) => {
@@ -38,7 +37,7 @@ function QrCodeLogin({ setMenuNow }) {
         transition={{ duration: 0.5, delay: 0 }} 
       >
         <QRCode 
-          value={`https://authentication-frontend-react.vercel.app/auth/qrcode/${socketIdRoom}`} 
+          value={`https://authentication-frontend-react.vercel.app/auth/qrcode/${qrCodeId}`} 
           renderAs={"svg"}
           style={{ height: "calc(100% + 0px)", width: "calc(100% + 0px)"}}
         />
