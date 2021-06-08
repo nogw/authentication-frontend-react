@@ -38,7 +38,7 @@ function QrCodeLogin({ setMenuNow }) {
         transition={{ duration: 0.5, delay: 0 }} 
       >
         <QRCode 
-          value={`http://localhost:3000/auth/qrcode/${socketIdRoom}`} 
+          value={`${process.env.BACKEND_URL}/auth/qrcode/${socketIdRoom}`} 
           renderAs={"svg"}
           style={{ height: "calc(100% + 0px)", width: "calc(100% + 0px)"}}
         />

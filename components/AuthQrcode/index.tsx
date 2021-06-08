@@ -7,7 +7,7 @@ import nookies from 'nookies'
 import { GetServerSideProps } from 'next';
 
 function AuthQrcode({ tokenExists }) {
-  const socket = io("http://localhost:8000");
+  const socket = io(process.env.BACKEND_URL);
   
   const router = useRouter()
   const { slug } = router.query
