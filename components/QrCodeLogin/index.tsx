@@ -9,7 +9,7 @@ import { Container } from "./styles";
 import Router from "next/router";
 
 function QrCodeLogin({ setMenuNow }) {
-  const socket = io(process.env.BACKEND_URL);
+  const socket = io(process.env.NEXT_PUBLIC_BACKEND_URL);
   const socketIdRoom = uuidv4()
 
   socket.on("connect", () => {
@@ -38,7 +38,7 @@ function QrCodeLogin({ setMenuNow }) {
         transition={{ duration: 0.5, delay: 0 }} 
       >
         <QRCode 
-          value={`${process.env.BACKEND_URL}/auth/qrcode/${socketIdRoom}`} 
+          value={`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/qrcode/${socketIdRoom}`} 
           renderAs={"svg"}
           style={{ height: "calc(100% + 0px)", width: "calc(100% + 0px)"}}
         />
