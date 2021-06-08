@@ -38,7 +38,7 @@ function QrCodeLogin({ setMenuNow }) {
         transition={{ duration: 0.5, delay: 0 }} 
       >
         <QRCode 
-          value={`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/qrcode/${socketIdRoom}`} 
+          value={`https://authentication-frontend-react.vercel.app/auth/qrcode/${socketIdRoom}`} 
           renderAs={"svg"}
           style={{ height: "calc(100% + 0px)", width: "calc(100% + 0px)"}}
         />
